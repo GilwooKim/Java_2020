@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -14,9 +16,18 @@ public class ServerEx {
 			System.out.println("서버시작")
 			Socket server = s.accept(); // 클라이언트 접속을 대기 -> 클라이언트가 접속시 클라이언트와 매칭되는 종이컵을 생성하게 됨.
 			InputStream is = server.getInputStream();
+//			//(1)
+//			InputStreamReader ISR = new InputStreamReader(is);
+//			BufferedReader br = new BufferedReader(ISR);
+//			String msg = br.readLine();
+//			//(1) Finish
+			//(2)
 			byte[] b = new byte[256];
 			is.read(b);
 			String msg = new String(b);
+			//(2) Finish
+			
+			
 			System.out.println( msg.trim() );
 			System.out.println("서버끝")
 		} // 무한루프 끝
